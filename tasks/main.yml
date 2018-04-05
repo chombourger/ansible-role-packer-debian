@@ -27,8 +27,8 @@
     - regexp: '^GSSAPIAuthentication'
       line: 'GSSAPIAuthentication no'
 
-# Vagrant SSH configuration.
-- name: Configure Vagrant .ssh directory.
+# SSH configuration.
+- name: Configure .ssh directory for the industrial user.
   file:
     path: /home/industrial/.ssh
     state: directory
@@ -36,7 +36,7 @@
     group: industrial
     mode: 0700
 
-- name: Get Vagrant's public key.
+- name: Configure authorized SSH keys.
   get_url:
     url: https://github.com/mitchellh/vagrant/raw/master/keys/vagrant.pub
     dest: /home/industrial/.ssh/authorized_keys
